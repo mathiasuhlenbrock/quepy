@@ -5,9 +5,12 @@ Dot generation code.
 """
 
 import random
-from quepy.expression import isnode
-from quepy.dsl import IsRelatedTo, HasKeyword
-from quepy.encodingpolicy import assert_valid_encoding
+#from quepy.expression import isnode
+#from quepy.dsl import IsRelatedTo, HasKeyword
+#from quepy.encodingpolicy import assert_valid_encoding
+from .expression import isnode
+from .dsl import IsRelatedTo, HasKeyword
+from .encodingpolicy import assert_valid_encoding
 
 
 def escape(x, add_quotes=True):

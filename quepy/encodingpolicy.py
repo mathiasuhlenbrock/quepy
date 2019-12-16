@@ -12,7 +12,8 @@ Functions to do encoding checkings.
 """
 
 import logging
-from quepy import settings
+# from quepy import settings
+from . import settings
 logger = logging.getLogger("quepy.encodingpolicy")
 
 
@@ -25,7 +26,8 @@ def encoding_flexible_conversion(string, complain=False):
     converting a string that had to be on the right encoding.
     """
 
-    if isinstance(string, unicode):
+    # if isinstance(string, unicode):
+    if isinstance(string, str):
         return string
     try:
         ustring = string.decode(settings.DEFAULT_ENCODING)
@@ -44,5 +46,6 @@ def assert_valid_encoding(string):
     ValueError exception.
     """
 
-    if not isinstance(string, unicode):
+    # if not isinstance(string, unicode):
+    if not isinstance(string, str):
         raise ValueError(u"Argument must be unicode")

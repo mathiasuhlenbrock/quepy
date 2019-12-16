@@ -15,11 +15,16 @@ import logging
 from importlib import import_module
 from types import ModuleType
 
-from quepy import settings
-from quepy import generation
-from quepy.parsing import QuestionTemplate
-from quepy.tagger import get_tagger, TaggingError
-from quepy.encodingpolicy import encoding_flexible_conversion
+#from quepy import settings
+#from quepy import generation
+#from quepy.parsing import QuestionTemplate
+#from quepy.tagger import get_tagger, TaggingError
+#from quepy.encodingpolicy import encoding_flexible_conversion
+from . import settings
+from . import generation
+from .parsing import QuestionTemplate
+from .tagger import get_tagger, TaggingError
+from .encodingpolicy import encoding_flexible_conversion
 
 logger = logging.getLogger("quepy.quepyapp")
 
@@ -35,10 +40,11 @@ def install(app_name):
     }
     modules = {}
 
-    for module_name, module_path in module_paths.iteritems():
+    #for module_name, module_path in module_paths.iteritems():
+    for module_name, module_path in module_paths.items():
         try:
             modules[module_name] = import_module(module_path.format(app_name))
-        except ImportError, error:
+        except ImportError as error:
             message = u"Error importing {0!r}: {1}"
             raise ImportError(message.format(module_name, error))
 

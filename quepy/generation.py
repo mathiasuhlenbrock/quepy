@@ -16,9 +16,12 @@ The currently supported languages are:
     * Dot: generation of graph images mainly for debugging.
 """
 
-from quepy.mql_generation import generate_mql
-from quepy.dot_generation import expression_to_dot
-from quepy.sparql_generation import expression_to_sparql
+#from quepy.mql_generation import generate_mql
+#from quepy.dot_generation import expression_to_dot
+#from quepy.sparql_generation import expression_to_sparql
+from .mql_generation import generate_mql
+from .dot_generation import expression_to_dot
+from .sparql_generation import expression_to_sparql
 
 
 def get_code(expression, language):

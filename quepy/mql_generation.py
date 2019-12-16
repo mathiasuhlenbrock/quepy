@@ -2,9 +2,12 @@
 
 import re
 import json
-from quepy.dsl import IsRelatedTo
-from quepy.expression import isnode
-from quepy.encodingpolicy import encoding_flexible_conversion
+#from quepy.dsl import IsRelatedTo
+#from quepy.expression import isnode
+#from quepy.encodingpolicy import encoding_flexible_conversion
+from .dsl import IsRelatedTo
+from .expression import isnode
+from .encodingpolicy import encoding_flexible_conversion
 
 
 def choose_start_node(e):

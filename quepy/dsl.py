@@ -13,8 +13,10 @@ Domain specific language definitions.
 """
 
 from copy import copy
-from quepy.expression import Expression
-from quepy.encodingpolicy import encoding_flexible_conversion
+#from quepy.expression import Expression
+#from quepy.encodingpolicy import encoding_flexible_conversion
+from .expression import Expression
+from .encodingpolicy import encoding_flexible_conversion
 
 
 class FixedRelation(Expression):

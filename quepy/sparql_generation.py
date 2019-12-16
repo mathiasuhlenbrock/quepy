@@ -4,16 +4,21 @@
 Sparql generation code.
 """
 
-from quepy import settings
-from quepy.dsl import IsRelatedTo
-from quepy.expression import isnode
-from quepy.encodingpolicy import assert_valid_encoding
+#from quepy import settings
+#from quepy.dsl import IsRelatedTo
+#from quepy.expression import isnode
+#from quepy.encodingpolicy import assert_valid_encoding
+from . import settings
+from .dsl import IsRelatedTo
+from .expression import isnode
+from .encodingpolicy import assert_valid_encoding
 
 _indent = u"  "
 
 
 def escape(string):
-    string = unicode(string)
+    # string = unicode(string)
+    string = str(string)
     string = string.replace("\n", "")
     string = string.replace("\r", "")
     string = string.replace("\t", "")
@@ -29,9 +34,11 @@ def adapt(x):
     if isnode(x):
         x = u"?x{}".format(x)
         return x
-    if isinstance(x, basestring):
-        assert_valid_encoding(x)
-        if x.startswith(u"\"") or ":" in x:
+    # if isinstance(x, basestring):
+    #     assert_valid_encoding(x)
+    #     if x.startswith(u"\"") or ":" in x:
+    if isinstance(x, str):
+        if x.startswith("\"") or ":" in x:
             return x
         return u'"{}"'.format(x)
     return unicode(x)
