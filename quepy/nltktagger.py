@@ -16,6 +16,7 @@ Tagging using NLTK.
 #   - "wordnet" in Corpora
 
 import nltk
+from somajo import SoMaJo
 # from quepy.tagger import Word
 # from quepy.encodingpolicy import assert_valid_encoding
 from .tagger import Word
@@ -57,7 +58,8 @@ def run_nltktagger(string, nltk_data_path=None):
 
     # Recommended tokenizer doesn't handle non-ascii characters very well
     # tokens = nltk.word_tokenize(string)
-    tokens = nltk.wordpunct_tokenize(string)
+    # tokens = nltk.wordpunct_tokenize(string)
+    tokens = tokenize(string)
     tags = nltk.pos_tag(tokens)
 
     words = []
@@ -83,3 +85,14 @@ def run_nltktagger(string, nltk_data_path=None):
         words.append(word)
 
     return words
+
+
+def tokenize(text):
+    tokens = list()
+    tokenizer = SoMaJo('de_CMC', split_camel_case=True)
+    paragraphs = [text]
+    sentences = tokenizer.tokenize_text(paragraphs)
+    for sentence in sentences:
+        for token in sentence:
+            tokens.append(token.text)
+    return tokens
